@@ -42,24 +42,31 @@
 
 Components.utils.import("resource:///modules/imServices.jsm");
 
-/*let observer = {
+let observer = {
     observe: function(subject, topic, data)
     {
         if (topic != "conversation-loaded")
             return;
 
-        Services.console.logStringMessage(subject);
+        var binding = subject.ownerDocument.getBindingParent(subject);
+
+        if (!binding || !("editor" in binding) || !binding.editor)
+            return;
+
+        var node = binding.editor.parentNode;
+
+        node.height = node.minHeight;
     },
-};*/
+};
 
 function startup(data, reason)
 {
-    //Services.obs.addObserver(observer, "conversation-loaded", false);
+    Services.obs.addObserver(observer, "conversation-loaded", false);
 }
 
 function shutdown(data, reason)
 {
-    //Services.obs.removeObserver(observer, "conversation-loaded");
+    Services.obs.removeObserver(observer, "conversation-loaded");
 }
 
 function install(data, reason) {}
