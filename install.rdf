@@ -16,6 +16,7 @@
         <em:bootstrap>true</em:bootstrap>
         <em:description>Makes new conversation input boxes start out at the minimal height.</em:description>
         <em:creator>Douglas Thrift</em:creator>
+        <em:homepageURL>http://code.douglasthrift.net/trac/instantbird#MinimalHeightInput</em:homepageURL>
     </Description>
 </RDF>
 <!-- vim: set expandtab: -->
